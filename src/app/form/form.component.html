@@ -1,0 +1,113 @@
+
+<!-- // table -->
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Dept</th>
+          <th>Blood-Group</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registration of registrations; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ registration.firstName }}</td>
+          <td>{{ registration.lastName }}</td>
+          <td>{{ registration.age }}</td>
+          <td>{{ registration.department}}</td>
+          <td>{{ registration.bloodgroup}}</td>
+          <td>{{ registration.address}}</td>
+          <td>{{ registration.phone}}</td>
+          
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-primary" (click)="onNew()">New Entry</button>
+      </div>
+  <br>
+  <!--  form  -->
+  <!-- first-name -->
+  <div *ngIf="showNew">
+  <div class="form-heading">Employee form entry</div>
+  <div class="regentry" >
+   
+    <form class="form" (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="firstname-input" class="col-2 col-form-label">First Name</label>
+        <div class="col-6">
+          <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
+        </div>
+      </div>
+      <!-- lastname -->
+      <div class="form-group row">
+        <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
+        <div class="col-6">
+          <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
+        </div>
+      </div>
+      <!-- age -->
+      <div class="form-group row">
+        <label for="dob-age" class="col-2 col-form-label">AGE</label>
+          <div class="col-3 input-group">
+            <input class="form-control" type="text" [(ngModel)]="regModel.age" name="age"> 
+          </div>
+      </div>
+      <!-- dept -->
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Dept</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="Department" ngbDropdownToggle>{{regModel.department}}</button>
+          <div class="dropdown-btn-width" ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button type="button" class="dropdown-item" *ngFor="let department of departments" (click)="onChangeCountry(department)">{{department}}</button>
+          </div>
+        </div>
+      </div>
+      <!-- bloodgroup -->
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Bloodgroup</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual1" name="Bloodgroup" ngbDropdownToggle>{{regModel.bloodgroup}}</button>
+          <div class="dropdown-btn-width" ngbDropdownMenu aria-labelledby="dropdownManual1">
+            <button type="button"  class="dropdown-item" *ngFor="let bg of bloodgroup" (click)="onChangeBloodgroup(bg)">{{bg}}</button>
+          </div>
+        </div>
+      </div>
+      <!-- address -->
+      <div class="form-group row">
+        <label for="address-input" class="col-2 col-form-label">Address</label>
+        <div class="col-8">
+          <input class="form-control" type="text" [(ngModel)]="regModel.address" name="address">
+        </div>
+      </div>
+      <!-- number -->
+      <div class="form-group row">
+        <label for="number-input" class="col-2 col-form-label">Phone</label>
+        <div class="col-6">
+          <input class="form-control" type="text" [(ngModel)]="regModel.phone" name="phone">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+  
+  </div>
+</div>
+</div>

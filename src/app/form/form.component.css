@@ -1,0 +1,32 @@
+.reglist{
+  margin-top: 10px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+.form{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+
+}
+
+.regentry{
+  width: 60%;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+}
+
+
+
+.dropdown-btn-width{
+  max-width: 160px;
+  width:133px;
+}
+
+.form-heading{
+  font-size: 30px;
+  font-weight: 700;
+  color: grey;
+  padding-left: 105px;
+  padding-left: 150px;
+}
